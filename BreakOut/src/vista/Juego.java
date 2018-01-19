@@ -1,4 +1,4 @@
-package Vista;
+package vista;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -34,12 +34,11 @@ public class Juego extends JPanel {
 //		g.setColor(new Color(255,50,50));
 //		g.drawLine(20, 30, 1060, 680);
 		for(GrupoBloques gb:bloques) {
-			//for(Bloque bloque:gb.getBloques()) {
-				for(int xbloque=0; xbloque!=55;xbloque++) {
-				colores[xbloque]=new Color(r.nextInt(255));
-				//g.setColor(Color.BLUE);
-				//g.fillRect(bloque.getX(),bloque.getY(), bloque.getAncho(),bloque.getAlto());
-			}
+			for(Bloque bloque:gb.getBloques()) {
+//				for(int xbloque=0; xbloque!=55;xbloque++) {
+//				colores[xbloque]=new Color(r.nextInt(255));
+				g.setColor(Color.BLUE);
+				g.fillRect(bloque.getX(),bloque.getY(), bloque.getAncho(),bloque.getAlto());			}
 		}
 	}
 //	public void run() {
@@ -47,7 +46,7 @@ public class Juego extends JPanel {
 //		for(int x=0; x!=30;x++) {
 //			colores[x]=new Color(r.nextInt(256) r.nextInt(256),r.nextInt(256));
 //		}
-//	}
+	//}
 
 }
 //}
