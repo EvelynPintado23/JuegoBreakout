@@ -3,17 +3,23 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import modelo.Bloque;
 import modelo.GrupoBloques;
 
-public class Juego extends JPanel {
-
+public class Juego extends JPanel implements ActionListener {
+	private JButton nivel1;
+	private JButton nivel2;
+	private JButton nivel3;
+	private JButton next;
 	private List<GrupoBloques> bloques;
 	Random r = new Random();
 	Color[] colores = new Color[55];
@@ -44,6 +50,7 @@ public class Juego extends JPanel {
 		g.drawString( "PUNTUACION:", 600, 60);
 		g.setColor(new Color(255,200,255));// color inventada de la linea
 		g.drawRect(40, 73,996 ,590 );//marco de el fondo 
+		
 		for (GrupoBloques gb : bloques) {
 			for (Bloque bloque : gb.getBloques()) {
 				// for(int xbloque=0; xbloque!=55;xbloque++) {
@@ -52,7 +59,14 @@ public class Juego extends JPanel {
 				g.fillRect(bloque.getX(), bloque.getY(), bloque.getAncho(), bloque.getAlto());
 			}
 		}
+	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando= e.getActionCommand();
+		
+		
 	}
 
 }
