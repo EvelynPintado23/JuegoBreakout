@@ -21,8 +21,7 @@ public class Juego extends JPanel implements ActionListener {
 	private JButton nivel3;
 	private JButton next;
 	private List<GrupoBloques> bloques;
-	Random r = new Random();
-	Color[] colores = new Color[55];
+	Random ra = new Random();
 
 	public Juego() {
 		bloques = new ArrayList<>();
@@ -53,9 +52,8 @@ public class Juego extends JPanel implements ActionListener {
 		
 		for (GrupoBloques gb : bloques) {
 			for (Bloque bloque : gb.getBloques()) {
-				// for(int xbloque=0; xbloque!=55;xbloque++) {
-				// colores[xbloque]=new Color(r.nextInt(255));
-				g.setColor(Color.BLUE);
+				int rojo=0, verde=0, azul=0;
+				g.setColor(new Color(rojo+ra.nextInt(255),verde+ra.nextInt(255),azul+ra.nextInt(255)));
 				g.fillRect(bloque.getX(), bloque.getY(), bloque.getAncho(), bloque.getAlto());
 			}
 		}
@@ -63,7 +61,6 @@ public class Juego extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		String comando= e.getActionCommand();
 		
 		
