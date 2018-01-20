@@ -20,6 +20,8 @@ public class Juego extends JPanel implements ActionListener {
 	private JButton nivel2;
 	private JButton nivel3;
 	private JButton next;
+	private int vidas=3;
+	private int puntos=0;
 	private List<GrupoBloques> bloques;
 	Random ra = new Random();
 
@@ -35,7 +37,6 @@ public class Juego extends JPanel implements ActionListener {
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		// int color;
 		g.setColor(new Color(0, 0, 15));
 		g.fillRect(0, 0, 1100, 720);
 		g.setColor(Color.RED);
@@ -43,10 +44,10 @@ public class Juego extends JPanel implements ActionListener {
 		g.drawString( "NIVEL 1", 50, 60);
 		g.setColor(Color.RED);
 		g.setFont( new Font( "Serif", Font.BOLD, 50) );
-		g.drawString( "VIDAS :", 300, 60);
+		g.drawString( "VIDAS :"+vidas, 300, 60);
 		g.setColor(Color.RED);
 		g.setFont( new Font( "Serif", Font.BOLD, 50) );
-		g.drawString( "PUNTUACION:", 600, 60);
+		g.drawString( "PUNTUACION:"+puntos, 600, 60);
 		g.setColor(new Color(255,200,255));// color inventada de la linea
 		g.drawRect(40, 73,996 ,590 );//marco de el fondo 
 		
