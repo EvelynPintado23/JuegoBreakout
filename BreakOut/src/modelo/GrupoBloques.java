@@ -29,6 +29,7 @@ public class GrupoBloques {
 		this.n = n;
 		generarBloques();
 	}
+	
 
 	private void generarBloques() {
 		bloques = new ArrayList<Bloque>();
@@ -41,8 +42,32 @@ public class GrupoBloques {
 			}
 		}
 	}
+//
+//	private void generarBloques2() {// level 2
+//		bloques = new ArrayList<Bloque>();
+//		int aux=0;
+//		for (int i = 0; i < 7; i++) {
+//			int con=0;
+//			for (int j = 0; j < 11; j++) {
+//				Bloque bloque2 = null;
+//				if(aux==0 || aux==6){
+//			    bloque2 = new Bloque(j * ancho + 45, i * alto + 75, ancho - 5, alto - 5);
+//				System.out.println(bloque2);
+//				bloques.add(bloque2);	
+//				}else if(con==0||con==1||con==9 ||con==10){
+//					 bloque2 = new Bloque(j * ancho + 45, i * alto + 75, ancho - 5, alto - 5);
+//						System.out.println(bloque2);
+//						bloques.add(bloque2);	
+//				}
+//				con=con+1;
+//				
+//			}
+//			aux=aux+1;
+//		}
+//	}
 
 	public List<Bloque> getBloques() {
 		return bloques;
 	}
+
 }

@@ -48,6 +48,9 @@ public class Juego extends JPanel implements ActionListener {
 		g.setColor(Color.RED);
 		g.setFont( new Font( "Serif", Font.BOLD, 50) );
 		g.drawString( "PUNTUACION:"+puntos, 600, 60);
+//		g.setFont( new Font( "Serif", Font.BOLD, 250) );//level 2
+//		g.drawString( "UPS ", 300, 280);
+		
 		g.setColor(new Color(255,200,255));// color inventada de la linea
 		g.drawRect(40, 73,996 ,590 );//marco de el fondo 
 		
@@ -58,6 +61,7 @@ public class Juego extends JPanel implements ActionListener {
 				g.fillRect(bloque.getX(), bloque.getY(), bloque.getAncho(), bloque.getAlto());
 			}
 		}
+		
 	}
 
 	@Override
