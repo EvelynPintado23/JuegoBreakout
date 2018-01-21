@@ -13,9 +13,8 @@ import modelo.Pelota;
 
 public class VentanaVerdadera extends JFrame {
 	
-	// private Pelota pelota = new Pelota(0, 0);
-	// private Timer timer;
-
+	 private Pelota pelota = new Pelota(500, 500);
+	 private Timer timer;
 
 	public VentanaVerdadera() {
 		initComponentes();
@@ -30,7 +29,7 @@ public class VentanaVerdadera extends JFrame {
 //				repaint();
 //			}
 //		});
-		//timer.start();
+//		timer.start();
 	}
 
 	public void initComponentes() {
@@ -39,7 +38,6 @@ public class VentanaVerdadera extends JFrame {
 		Juego juego = new Juego();
 		juego.setNumeroBloques();
 		getContentPane().add(juego, BorderLayout.CENTER);
-
 
 	    }
 
