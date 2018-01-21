@@ -1,20 +1,36 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 import modelo.Pelota;
 
 public class VentanaVerdadera extends JFrame {
+	
+	// private Pelota pelota = new Pelota(0, 0);
+	// private Timer timer;
+
 
 	public VentanaVerdadera() {
 		initComponentes();
 		setSize(1100, 720);
 		setResizable(false);
 		setVisible(true);
-		
+
+//		pelota.LimitesXY(getWidth(), getHeight());
+//		Timer timer = new Timer(1600, new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				pelota.move();
+//				repaint();
+//			}
+//		});
+		//timer.start();
 	}
 
 	public void initComponentes() {
@@ -23,6 +39,10 @@ public class VentanaVerdadera extends JFrame {
 		Juego juego = new Juego();
 		juego.setNumeroBloques();
 		getContentPane().add(juego, BorderLayout.CENTER);
+
+
+	    }
+
 	}
 
-}
+

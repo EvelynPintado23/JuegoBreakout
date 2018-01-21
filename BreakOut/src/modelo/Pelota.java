@@ -8,14 +8,12 @@ import javax.swing.ImageIcon;
 
 public class Pelota {
 
-	private Image balon;
+	private ImageIcon balon;
 	// Coordenadas de la pelota
 	private int X;
 	private int Y;
-
 	private int velocidad_X;
 	private int velocidad_Y;
-
 	private int limite_izquierda = 0;
 	private int limite_derecha;
 	private int limite_superior = 0;
@@ -26,15 +24,14 @@ public class Pelota {
 		this.X = x;
 		this.Y = y;
 		// imagen de la pelota
-		balon = new ImageIcon(getClass().getResource("ball2.png")).getImage();
+		balon = new ImageIcon(("balonjuego.png"));
 		// ImageIcon balon = new ImageIcon(getClass().getResource("ball1.png"));
 	}
 
 	// dado las dimensiones del contendor JPanel
-	public void LimitesXY(int width, int height) {
-		
-		limite_derecha = width - balon.getWidth(null);
-		limite_inferior = height - balon.getHeight(null);
+	public void LimitesXY(int width,int height) {
+		limite_derecha = width - balon.getIconWidth();
+		limite_inferior = height - balon.getIconHeight();
 	}
 
 	// recalcula variables para dar la sensacion de movimiento
@@ -67,7 +64,7 @@ public class Pelota {
 
 	public void dibujar(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		g2.drawImage(balon, X, Y, null);
+		//g2.drawImage(balon, X, Y, null);
 
 	}
 

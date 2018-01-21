@@ -12,21 +12,36 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import javax.swing.Timer;
+
 import modelo.Bloque;
 import modelo.GrupoBloques;
+import modelo.Pelota;
 
 public class Juego extends JPanel implements ActionListener {
 	private JButton nivel1;
 	private JButton nivel2;
 	private JButton nivel3;
 	private JButton next;
+	private int width=1100;
+	private int height=720;
 	private int vidas=3;
 	private int puntos=0;
+	private Pelota pelota = new Pelota(0, 0);
+	private Timer timer;
 	private List<GrupoBloques> bloques;
 	Random ra = new Random();
 
 	public Juego() {
 		bloques = new ArrayList<>();
+		
+		pelota.LimitesXY((width),(height));
+		timer = new Timer(1600, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pelota.move();
+				repaint();
+			}
+		});
 	}
 
 	public void setNumeroBloques() {
@@ -34,6 +49,15 @@ public class Juego extends JPanel implements ActionListener {
 		System.out.println(bloq.getBloques());
 		bloques.add(bloq);
 	}
+	
+	 public void animar(boolean turnOnOff) {
+	        if (turnOnOff) {
+	            pelota.setVelocidadXY();
+	            timer.start();
+	        } else {
+	            timer.stop();
+	        }
+	    }
 
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -62,7 +86,10 @@ public class Juego extends JPanel implements ActionListener {
 			}
 		}
 		
+		 pelota.dibujar(g);
+		
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
