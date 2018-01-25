@@ -9,11 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import modelo.Pelota;
+import modelo.Pelotamn;
 
 public class VentanaVerdadera extends JFrame {
 	
-	 private Pelota pelota = new Pelota(500, 500);
+	 private Pelotamn pelota = new Pelotamn(500, 500);
 	 private Timer timer;
 
 	public VentanaVerdadera() {

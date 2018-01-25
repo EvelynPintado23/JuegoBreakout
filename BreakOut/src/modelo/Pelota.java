@@ -1,76 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
+import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
+/**
+ *
+ * @author USER
+ */
 public class Pelota {
+    
+    private int x;
+    private int y;
+    private int alto;
+    private int ancho;
 
-	private ImageIcon balon;
-	// Coordenadas de la pelota
-	private int X;
-	private int Y;
-	private int velocidad_X;
-	private int velocidad_Y;
-	private int limite_izquierda = 0;
-	private int limite_derecha;
-	private int limite_superior = 0;
-	private int limite_inferior;
+    public Pelota(int x, int y, int alto, int ancho) {
+        this.x = x;
+        this.y = y;
+        this.alto = alto;
+        this.ancho = ancho;
+    }
 
-	public Pelota(int x, int y) {
-		// coordenadas iniciales
-		this.X = x;
-		this.Y = y;
-		// imagen de la pelota
-		balon = new ImageIcon(("balonjuego.png"));
-		// ImageIcon balon = new ImageIcon(getClass().getResource("ball1.png"));
-	}
+    public int getX() {
+        return x;
+    }
 
-	// dado las dimensiones del contendor JPanel
-	public void LimitesXY(int width,int height) {
-		limite_derecha = width - balon.getIconWidth();
-		limite_inferior = height - balon.getIconHeight();
-	}
+    public void setX(int x) {
+        this.x = x;
+    }
 
-	// recalcula variables para dar la sensacion de movimiento
-	public void move() {
-		// nueva posicion
-		X += velocidad_X;
-		Y += velocidad_Y;
-		// controla que la pelota no salga de los limites del contenedor
-		if (X < this.limite_izquierda) {
-			X = 0;
-			velocidad_X = -velocidad_X;
-		} else if (X > limite_derecha) {
-			X = limite_derecha;
-			velocidad_X = -velocidad_X;
-		}
-		if (Y < this.limite_superior) {
-			Y = 0;
-			velocidad_Y = -velocidad_Y;
+    public int getY() {
+        return y;
+    }
 
-		} else if (Y > limite_inferior) {
-			Y = limite_inferior;
-			velocidad_Y = -velocidad_Y;
-		}
-	}
+    public void setY(int y) {
+        this.y = y;
+    }
 
-	public void setVelocidadXY() {
-		velocidad_X = getNumberRandom(4);
-		velocidad_Y = getNumberRandom(8);
-	}
+    public int getAlto() {
+        return alto;
+    }
 
-	public void dibujar(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		//g2.drawImage(balon, X, Y, null);
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
 
-	}
+    public int getAncho() {
+        return ancho;
+    }
 
-	// devuelve un número aleatorio entre 1 y MAX
-	private int getNumberRandom(int Max) {
-		return (int) (Math.random() * Max + 1);
-	}
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
 
+   
+    public void paintComponent(Graphics grphcs) 
+    {
+        grphcs.setColor(Color.LIGHT_GRAY);
+        grphcs.fillOval(x, y, alto, ancho);
+    }
+    
 }

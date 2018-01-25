@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import javax.swing.Timer;
@@ -19,21 +21,38 @@ import modelo.GrupoBloques;
 import modelo.GrupoBloques2;
 import modelo.GrupoBloques3;
 import modelo.Pelota;
+import modelo.Pelotamn;
 
 public class Juego extends JPanel implements ActionListener {
 	private JButton nivel1;
 	private JButton nivel2;
 	private JButton nivel3;
 	private JButton next;
+    private int x1=350;
+    private int x2=320;
+    int numLadrillos=0;
+    private int y1=420;
+    private int y2=380;
+    private int alto1=110;
+    private int alto2=20;
+    private int ancho1=18;
+    private int ancho2=20;
+    private int ancho3=9;
 	private int width=1100;
 	private int height=720;
+    private int incrementox=20;
+    private int incrementoy=20;
+    private int contador;
+    private int contador2;
+    private boolean band=true;
 	private int vidas=3,puntos=0,nivel=0;
-	private Pelota pelota = new Pelota(0, 0);
+	private Pelotamn pelota = new Pelotamn(0, 0);
 	private Timer timer;
 	private List<GrupoBloques> bloques;
 	private List<GrupoBloques2> bloques2;
 	private List<GrupoBloques3> bloques3;
 	Random ra = new Random();
+	
 	
 	public Juego() {
 		bloques = new ArrayList<>();
@@ -46,6 +65,8 @@ public class Juego extends JPanel implements ActionListener {
 				repaint();
 			}
 		});
+//		Pelota p=new Pelota(x2,y2,alto2,ancho2);
+//	    p.paintComponent(grphcs);
 	}
 
 	public void setNumeroBloques() {
@@ -75,6 +96,8 @@ public class Juego extends JPanel implements ActionListener {
 
 	public void paint(Graphics g) {
 		super.paint(g);
+		Pelota p=new Pelota(x2,y2,alto2,ancho2);
+	    p.paintComponent(g);
 		if(nivel==0){
 			g.setColor(new Color(0, 0, 15));
 			g.fillRect(0, 0, 1100, 720);
@@ -163,15 +186,68 @@ public class Juego extends JPanel implements ActionListener {
 		
 	}
 	
-	
-
+	public void MovPelota(Graphics g) {  
+        if((x2>this.getWidth()-20)||(x2<0)){
+            incrementox=incrementox*-1;   
+        }
+       
+        if(y2<0){
+            incrementoy=incrementoy*-1;    
+        }
+            
+        int posBasefinalx=0;
+        posBasefinalx=x1;
+        posBasefinalx=posBasefinalx+110;
+            
+        int posBasefinaly=0;
+        posBasefinaly=y1;
+        posBasefinaly=posBasefinaly+18;
+            
+        if((x2>=x1-20)&&(x2<=posBasefinalx)&&(y2==y1-20)){ 
+            incrementoy=incrementoy*-1;  
+        }
+        
+        int posLadrillofinalx=0;
+        int posLadrillofinaly=0;
+        
+        
+      for (GrupoBloques gb : bloques) {
+        for (Bloque bloque : gb.getBloques()) {
+      posLadrillofinalx=bloque.getX()+70;
+      posLadrillofinaly=bloque.getY()+15;
+			int rojo=0, verde=0, azul=0;
+			g.setColor(new Color(rojo+ra.nextInt(255),verde+ra.nextInt(255),azul+ra.nextInt(255)));
+			g.fillRect(bloque.getX(), bloque.getY(), bloque.getAncho(), bloque.getAlto());
+       if((x2>=bloque.getX())&&(x2<=posLadrillofinalx)&&(y2>=bloque.getY())&& (y2<=posLadrillofinaly)){     
+          incrementoy=incrementoy*-1;
+           bloque.setVisible(false);
+          bloque.setX(-20);
+          contador++;
+          contador2++;
+          numLadrillos--;
+          System.out.println("Contador "+contador2);
+		}
+	}
+      
+        
+        if(((x2<x1)||(x2>posBasefinalx))&&(y2>posBasefinaly)){
+            JOptionPane.showMessageDialog(this,"Juego Terminado");
+            band=false;
+            System.exit(WIDTH); 
+        }
+        
+        if(contador2==98) {
+            JOptionPane.showMessageDialog(this,"Haz ganado!");
+            band=false;
+            System.exit(WIDTH);
+        }       
+    }
+}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		String comando= e.getActionCommand();
-		
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
-
 }
 
