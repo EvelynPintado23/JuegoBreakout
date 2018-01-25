@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import javax.swing.Timer;
 
+import modelo.Base;
 import modelo.Bloque;
 import modelo.GrupoBloques;
 import modelo.GrupoBloques2;
@@ -45,15 +46,13 @@ public class Juego extends JPanel implements ActionListener {
     private int contador;
     private int contador2;
     private boolean band=true;
-	private int vidas=3,puntos=0,nivel=0;
+	private int vidas=3,puntos=0,nivel=3;
 	private Pelotamn pelota = new Pelotamn(0, 0);
 	private Timer timer;
 	private List<GrupoBloques> bloques;
 	private List<GrupoBloques2> bloques2;
 	private List<GrupoBloques3> bloques3;
-	Random ra = new Random();
-	
-	
+	Random ra = new Random();	
 	public Juego() {
 		bloques = new ArrayList<>();
 		bloques2 = new ArrayList<>();
@@ -96,9 +95,10 @@ public class Juego extends JPanel implements ActionListener {
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		Pelota p=new Pelota(x2,y2,alto2,ancho2);
-	    p.paintComponent(g);
+		
+	    //p.paintComponent(g);
 		if(nivel==0){
+			Pelota p=new Pelota(x2,y2,alto2,ancho2);
 			g.setColor(new Color(0, 0, 15));
 			g.fillRect(0, 0, 1100, 720);
 			g.setColor(new Color(0,255,100));
@@ -106,9 +106,11 @@ public class Juego extends JPanel implements ActionListener {
 			g.drawString( "BREAKOUT UPS", 20, 250);
 			g.setColor(new Color(255,200,255));// color inventada de la linea
 			g.drawRect(40, 73,996 ,590 );//marco de el fondo 
-			
+			 p.paintComponent(g);
 		}
 		if(nivel==1){
+			Base b=new Base(450,632,120,30);
+			Pelota p=new Pelota(x2,y2,alto2,ancho2);
 			g.setColor(new Color(0, 0, 15));
 			g.fillRect(0, 0, 1100, 720);
 			g.setColor(Color.RED);
@@ -125,7 +127,7 @@ public class Juego extends JPanel implements ActionListener {
 			
 			g.setColor(new Color(255,200,255));// color inventada de la linea
 			g.drawRect(40, 73,996 ,590 );//marco de el fondo 
-			
+			b.paintComponent(g);
 			for (GrupoBloques gb : bloques) {
 				for (Bloque bloque : gb.getBloques()) {
 					int rojo=0, verde=0, azul=0;
@@ -135,6 +137,8 @@ public class Juego extends JPanel implements ActionListener {
 			}
 		}
 		if(nivel==2){
+			Base b=new Base(450,632,120,30);
+			Pelota p=new Pelota(x2,y2,alto2,ancho2);
 			g.setColor(new Color(0, 0, 15));
 			g.fillRect(0, 0, 1100, 720);
 			g.setColor(Color.RED);
@@ -150,7 +154,7 @@ public class Juego extends JPanel implements ActionListener {
 			g.drawString( "UPS ", 300, 280);		
 			g.setColor(new Color(255,200,255));// color inventada de la linea
 			g.drawRect(40, 73,996 ,590 );//marco de el fondo 
-			
+			b.paintComponent(g);
 			for (GrupoBloques2 gb2 : bloques2) {
 				for (Bloque bloque2 : gb2.getBloques()) {
 					int rojo=0, verde=0, azul=0;
@@ -158,8 +162,11 @@ public class Juego extends JPanel implements ActionListener {
 					g.fillRect(bloque2.getX(), bloque2.getY(), bloque2.getAncho(), bloque2.getAlto());
 				}
 			}
+			 p.paintComponent(g);
 		}
 		if(nivel==3){
+			Base b=new Base(450,632,120,30);
+			Pelota p=new Pelota(x2,y2,alto2,ancho2);
 			g.setColor(new Color(0, 0, 15));
 			g.fillRect(0, 0, 1100, 720);
 			g.setColor(Color.RED);
@@ -173,6 +180,7 @@ public class Juego extends JPanel implements ActionListener {
 			g.drawString( "PUNTUACION:"+puntos, 600, 60);
 			g.setColor(new Color(255,200,255));// color inventada de la linea
 			g.drawRect(40, 73,996 ,590 );//marco de el fondo 
+			b.paintComponent(g);
 			for (GrupoBloques3 gb3 : bloques3) {
 				for (Bloque bloque3 : gb3.getBloques()) {
 					int rojo=0, verde=0, azul=0;
@@ -180,13 +188,13 @@ public class Juego extends JPanel implements ActionListener {
 					g.fillRect(bloque3.getX(), bloque3.getY(), bloque3.getAncho(), bloque3.getAlto());
 				}
 			}
+			 p.paintComponent(g);
 		}
 		g.setColor(Color.WHITE);
 		 pelota.dibujar(g);
-		
 	}
 	
-	public void MovPelota(Graphics g) {  
+	public void MovPelota() {  
         if((x2>this.getWidth()-20)||(x2<0)){
             incrementox=incrementox*-1;   
         }
@@ -216,20 +224,19 @@ public class Juego extends JPanel implements ActionListener {
       posLadrillofinalx=bloque.getX()+70;
       posLadrillofinaly=bloque.getY()+15;
 			int rojo=0, verde=0, azul=0;
-			g.setColor(new Color(rojo+ra.nextInt(255),verde+ra.nextInt(255),azul+ra.nextInt(255)));
-			g.fillRect(bloque.getX(), bloque.getY(), bloque.getAncho(), bloque.getAlto());
+//			g.setColor(new Color(rojo+ra.nextInt(255),verde+ra.nextInt(255),azul+ra.nextInt(255)));
+//			g.fillRect(bloque.getX(), bloque.getY(), bloque.getAncho(), bloque.getAlto());
        if((x2>=bloque.getX())&&(x2<=posLadrillofinalx)&&(y2>=bloque.getY())&& (y2<=posLadrillofinaly)){     
           incrementoy=incrementoy*-1;
-           bloque.setVisible(false);
+        //  bloque.setVisible(false);
+          bloque.setVisible(false);
           bloque.setX(-20);
           contador++;
           contador2++;
           numLadrillos--;
           System.out.println("Contador "+contador2);
 		}
-	}
-      
-        
+	}     
         if(((x2<x1)||(x2>posBasefinalx))&&(y2>posBasefinaly)){
             JOptionPane.showMessageDialog(this,"Juego Terminado");
             band=false;

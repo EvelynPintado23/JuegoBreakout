@@ -22,14 +22,14 @@ public class VentanaVerdadera extends JFrame {
 		setResizable(false);
 		setVisible(true);
 
-//		pelota.LimitesXY(getWidth(), getHeight());
-//		Timer timer = new Timer(1600, new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				pelota.move();
-//				repaint();
-//			}
-//		});
-//		timer.start();
+		pelota.LimitesXY(getWidth(), getHeight());
+		Timer timer = new Timer(1600, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pelota.move();
+				repaint();
+			}
+		});
+		timer.start();
 	}
 
 	public void initComponentes() {

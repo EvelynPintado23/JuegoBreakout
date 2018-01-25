@@ -6,6 +6,7 @@ public class Bloque {
 	private int y;
 	private int ancho;
 	private int alto;
+    public boolean visible;
 
 	public Bloque(int x, int y, int ancho, int alto) {
 		super();
@@ -13,6 +14,7 @@ public class Bloque {
 		this.y = y;
 		this.ancho = ancho;
 		this.alto = alto;
+        visible=true;
 	}
 
 	public int getX() {
@@ -52,4 +54,13 @@ public class Bloque {
 		return "Bloque [x=" + x + ", y=" + y + ", ancho=" + ancho + ", alto=" + alto + "]";
 	}
 
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+   
 }
